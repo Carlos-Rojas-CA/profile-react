@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Box from '@material-ui/core/Box';
@@ -12,6 +12,8 @@ import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Zoom from '@material-ui/core/Zoom';
+//import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import theme from '../../utils/themeUtil';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -21,7 +23,8 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         flexGrow: 1,
-      },
+    }
+
 }));
 
 function HideOnScroll(props) {
@@ -89,18 +92,19 @@ export default function AppBarScroll(props) {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <CssBaseline />
-            <HideOnScroll {...props} >
-                <AppBar>
-                    <Toolbar>
-                        <Typography variant="h6" align="center" > {props.myName} </Typography>
-                    </Toolbar>
-                </AppBar>
-            </HideOnScroll>
-            <Toolbar id="back-to-top-anchor" />
-            <Container>
-                {props.children}
-                {/* <Box my={2}>
+            <ThemeProvider theme={theme}>
+                {/* <CssBaseline /> */}
+                <HideOnScroll {...props} >
+                    <AppBar color='primary' >
+                        <Toolbar>
+                            <Typography variant="sub1" component="h6" align="center" > {props.myName} </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </HideOnScroll>
+                <Toolbar id="back-to-top-anchor" />
+                <Container>
+                    {props.children}
+                    {/* <Box my={2}>
                     {[...new Array(12)]
                         .map(
                             () => `Cras mattis consectetur purus sit amet fermentum.
@@ -110,12 +114,13 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                         )
                         .join('\n')}
                 </Box> */}
-            </Container>
-            <ScrollTop {...props}>
-                <Fab color="secondary" size="small" aria-label="scroll back to top">
-                    <KeyboardArrowUpIcon />
-                </Fab>
-            </ScrollTop>
+                </Container>
+                <ScrollTop {...props}>
+                    <Fab color="secondary" size="small" aria-label="scroll back to top">
+                        <KeyboardArrowUpIcon />
+                    </Fab>
+                </ScrollTop>
+            </ThemeProvider>
         </React.Fragment>
     );
 }
