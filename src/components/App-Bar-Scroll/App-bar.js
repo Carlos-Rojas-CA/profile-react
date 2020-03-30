@@ -4,9 +4,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+// import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import Slide from '@material-ui/core/Slide';
 import Container from '@material-ui/core/Container';
 import Fab from '@material-ui/core/Fab';
@@ -89,7 +89,7 @@ ScrollTop.propTypes = {
 };
 
 export default function AppBarScroll(props) {
-    const classes = useStyles();
+    // const classes = useStyles();
     return (
         <React.Fragment>
             <ThemeProvider theme={theme}>
